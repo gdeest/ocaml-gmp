@@ -1,0 +1,33 @@
+OASISFormat: 0.4
+Name:        ocaml-gmp
+Version:     0.1
+Synopsis:    Bindings for GMP 6.
+Authors:     Gaël Deest
+License:     LGPL-3.0
+Plugins:     DevFiles (0.4), META (0.4)
+
+Library gmp
+  Path:       gmp
+  BuildTools: ocamlbuild
+  CompiledObject: best
+  CCOpt: -cclib,-Xlinker,-cclib,-no-as-needed,-Wl
+  BuildDepends: ctypes, ctypes.foreign
+  Modules: Gmp
+  CCLib: -Wl,--no-as-needed -lgmp
+  
+Executable init
+  Install: false
+  Path: examples
+  BuildDepends: gmp
+  CompiledObject: best
+  BuildTools: ocamlbuild
+  MainIs: init.ml
+
+Executable testSuite
+  Install: false
+  Path: tests
+  BuildDepends: gmp, oUnit
+  CompiledObject: best
+  BuildTools: ocamlbuild
+  MainIs: testSuite.ml
+

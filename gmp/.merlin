@@ -1,0 +1,5 @@
+PKG ctypes
+PKG ctypes.foreign
+
+S .
+B ../_build/gmp
